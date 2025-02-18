@@ -27,7 +27,7 @@ python -m venv .venv
 # For Linux/Mac users
 source .venv/bin/activate
 # For Windows users
-.\.venv\Scripts\activate.bat
+.\denser-env\Scripts\activate.bat
 ```
 
 Run the following command to install the required packages.
@@ -63,7 +63,12 @@ command. As the app relies on ChatGPT or Claude API, we need to set their keys (
 
 ```bash
 export OPENAI_API_KEY="your-openai-key"
-export CLAUDE_API_KEY="your-claude-key"
+```
+
+Instead of the above generate a .env file with
+```bash
+OPENAI_API_KEY="your-openai-key"
+GOOGLE_API_KEY="your-google-key"
 ```
 
 In order to run the app, we need to start a local server to serve the PDFs. We can use the following command to start a server at root directory.
@@ -84,3 +89,15 @@ Then we can start to ask questions such as "What is in-batch negative sampling ?
 ### License
 
 This project is licensed under the MIT License.
+
+### To Start Dev
+in one terminal
+```bash
+python -m http.server 8000 
+```
+
+in another terminal - be sure to be inside denser-chat/denser_chat
+```bash
+cd denser_chat
+streamlit run demo.py -- --index_name test_index 
+```
