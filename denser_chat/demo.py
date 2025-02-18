@@ -1,6 +1,8 @@
 from openai import OpenAI
+import re
 import streamlit as st
 import time
+import sys
 import os
 import subprocess
 import argparse
@@ -88,7 +90,6 @@ def create_viewer_url_by_passage(passage):
 
 def post_process_html(full_response: str, passages: list) -> str:
     """Replace citations with clickable HTML links."""
-    import re
     def replace_citation(match):
         num = int(match.group(1)) - 1
         if num < len(passages):
@@ -178,7 +179,6 @@ def main(args):
             
             # Run build.py to process sources.txt and update the index.
             try:
-                import sys
                 result = subprocess.run(
                     [sys.executable, "build.py", "sources.txt", "output", "test_index"],
                     capture_output=True,
