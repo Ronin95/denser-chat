@@ -4,7 +4,6 @@ import shutil
 import json
 import logging
 from urllib.parse import urlparse, urlencode, quote
-
 from denser_retriever.retriever import DenserRetriever
 from denser_retriever.keyword import (
     ElasticKeywordSearch,
@@ -29,7 +28,7 @@ class Indexer:
                     password="",
                 ),
                 drop_old=True,
-                analysis="german"  # Use German analyzer for better handling of German text
+                analysis="default"
             ),
             vector_db=None,
             reranker=None,
